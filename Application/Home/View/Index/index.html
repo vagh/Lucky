@@ -12,13 +12,14 @@
     <link href="Public/dist/css/flat-ui.css" rel="stylesheet">
     <link href="Public/docs/assets/css/demo.css" rel="stylesheet">
     <link rel="stylesheet" href="Public/css/luck.css" />
+    <link rel="stylesheet" href="Public/css/am.css" />
 	<script type="text/javascript" src="http://youzikuwebfont.oss-cn-beijing.aliyuncs.com/api.lib.min.js"></script>
 	</head>
 	<body>
 		<div class="snow-container"></div>
 		<h1 class="text-center" id="id1">汇通天下2016年 年会抽奖</h1>
 
-		<div id="roll">点击按钮开始抽奖</div>
+		<div id="roll">准备就绪</div>
 		<input type="hidden" id="mid" value=""> 
 		<div class="container">
 			<div class="row">
@@ -29,8 +30,60 @@
 					<input type="button" class="btn btn-large btn-block btn-danger" id="stop" value="停止" disabled="disabled">
 				</div>
 			</div>
+			<div class="row selectTypelist">
+				<div class="col-md-3">
+					<label class="radio">
+						<input type="radio" data-toggle="radio" value="4" id="optionsRadios4" name="luckType" class="custom-radio" checked="checked">
+						<span class="icons">
+							<span class="icon-unchecked"></span>
+							<span class="icon-checked"></span>
+						</span>
+			            四等奖
+			        </label>
+				</div>
+				<div class="col-md-3">
+					<label class="radio">
+						<input type="radio" data-toggle="radio" value="3" id="optionsRadios3" name="luckType" class="custom-radio">
+						<span class="icons">
+							<span class="icon-unchecked"></span>
+							<span class="icon-checked"></span>
+						</span>
+			            三等奖
+			        </label>
+				</div>
+				<div class="col-md-3">
+					<label class="radio">
+						<input type="radio" data-toggle="radio" value="2" id="optionsRadios2" name="luckType" class="custom-radio">
+						<span class="icons">
+							<span class="icon-unchecked"></span>
+							<span class="icon-checked"></span>
+						</span>
+			            二等奖
+			        </label>
+				</div>
+				<div class="col-md-3">
+					<label class="radio">
+						<input type="radio" data-toggle="radio" value="1" id="optionsRadios1" name="luckType" class="custom-radio">
+						<span class="icons">
+							<span class="icon-unchecked"></span>
+							<span class="icon-checked"></span>
+						</span>
+			            一等奖
+			        </label>
+				</div>
+			</div>
 		</div>
-		<div id="result"></div>
+
+		<div id="result" class="swatches-col">
+			<volist name="history" id="historyData">
+				<div class="pallete-item rubberBand animated">
+					<dl class="palette {$historyData['color']}">
+						<dt>{$historyData['name']}</dt>
+    					<dd>{$historyData['typename']}</dd>
+					</dl>
+				</div>
+			</volist>
+		</div>
 
 		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 	    <script src="Public/dist/js/vendor/video.js"></script>

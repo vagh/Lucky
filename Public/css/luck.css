@@ -2,16 +2,15 @@ html {
 	width: 100%;
 	height: 100%;
 }
-
 #id1 {
-	font-size: 80px;
+	font-size: 100px;
+	color: #e4e4e4;
 }
-
 body {
 	background-repeat: no-repeat;
 	background-position: center center #2D0F0F;
 	background-color: #00BDDC;
-	background-image: url(a.jpg);
+	background-image: url(../a.jpg);
 	background-size: 100% 100%;
 }
 .snow-container {
@@ -23,10 +22,13 @@ body {
 	pointer-events: none;
 	z-index: 3;
 }
-
+.selectTypelist{
+	margin: 20px;
+}
 #roll {
+	color: #fff;
 	font-size: 70px;
     letter-spacing: 15px;
-    margin: 10px 20px;
+    margin: 30px 20px 10px;
     text-align: center;
 }

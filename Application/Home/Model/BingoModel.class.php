@@ -16,7 +16,7 @@ class BingoModel extends Model {
      *  @author : lvpenglong
      *  @since  : 2015-10-12
      */
-    public function draw(){
+    public function draw($type = 1){
 		
 		$sql = "SELECT `name`, `year`, `depart` FROM `luck_awards`
         WHERE depart IN (SELECT `dname` FROM `luck_depart` WHERE num != prize)
@@ -41,7 +41,7 @@ class BingoModel extends Model {
         $seed = $max > 0 ? mt_rand(0, $max) : 0;
 
        	$name = $list[$seed]['name'];
-        $this->where(['name'=>$name])->save(['flag'=>1]);
+        $this->where(['name'=>$name])->save(['flag'=>1,'type'=>$type]);
 
         $dname = $list[$seed]['depart'];
         M('Depart')->where(['dname'=>$dname])->setInc('prize');

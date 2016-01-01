@@ -3,8 +3,19 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
 
+    private $luckList = [1=>'一等奖',2=>'二等奖',3=>'三等奖',4=>'四等奖'];
+
     public function index(){
     	$Bingo = D('Bingo');
+        // 防止页面刷新清除中奖历史
+        $history = $Bingo->where(['type'=>['neq',0],'flat'=>['neq',0]])->field('name,type')->order('type DESC')->select();
+        if( $history ){
+            foreach ($history as &$value) {
+                $value['typename'] = $this->luckList[$value['type']];
+                $value['color']    = $this->_getBlockColor($value['type']);
+            }
+        }
+        $this->assign('history',$history);
     	$this->display();
     }
 
@@ -23,14 +34,20 @@ class IndexController extends Controller {
     	}
     }
 
+    private function _getBlockColor($type = 1){
+        $colorList = [1=>'palette-pomegranate',2=>'palette-wisteria',3=>'palette-peter-river',4=>'palette-emerald'];
+        return $colorList[$type];
+    }
+
     /**
      * 抽取一个
      * @return [type] [description]
      */
     public function getOne(){
     	$Bingo = D('Bingo');
-    	$res = $Bingo->draw();
-    	$this->ajaxReturn(['name'=>$res]);
+        $type  = I('type');
+    	$res = $Bingo->draw($type);
+    	$this->ajaxReturn(['name'=>$res,'typename'=>$this->luckList[$type],'type'=>$type]);
     }
 
     /**

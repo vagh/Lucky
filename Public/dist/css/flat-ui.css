@@ -1961,7 +1961,8 @@ fieldset[disabled] .input-group-btn .btn-default.active {
   -webkit-transition: color .25s linear;
           transition: color .25s linear;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.2;
+  color: #fff;
 }
 .checkbox .icons,
 .radio .icons {
@@ -5729,7 +5730,7 @@ fieldset[disabled] .navbar-inverse .navbar-btn.active {
 .pallete-item {
   width: 140px;
   float: left;
-  margin: 0 0 20px 20px;
+  margin: 20px 40px;
 }
 .palette {
   font-size: 14px;
