@@ -49,7 +49,17 @@ class BingoModel extends Model {
         return $list[$seed]['name'];
     }
 
-    public function getList($type){
+    /**
+     * 获取前端动画展示列表
+     * ---------------------------------------------
+     * @param  [type]  $type  [description]
+     * @param  boolean $field [description]
+     * @return [type]         [description]
+     * ---------------------------------------------
+     * @author yuzhihao <yu@vagh.cn>
+     * @since  2015-01-04
+     */
+    public function getList($type,$field = true){
         //检查此类名额是否达到指定数量
         $num = $this->where(['type'=>$type])->count();
         if( $num >= $this->lotteryNum[$type] ){
@@ -57,7 +67,10 @@ class BingoModel extends Model {
             return false;
         }
         //获取相关人员列表
-        $lists = $this->where(['flag'=>'0','type'=>'0'])->select();
+        $lists = $this->where(['flag'=>'0','type'=>'0'])->field($field)->select();
+        //打乱列表
+        shuffle($lists);
+
         return $lists;
     }
 
@@ -73,11 +86,13 @@ class BingoModel extends Model {
      */
     public function depart($num = 1){
     	$depart = M('Depart');
+        // 生成前先清空
+        $sql = "TRUNCATE TABLE `luck_depart`";
+        $depart->execute($sql);
+
         $count = $this->count();
         $ratio = $num / $count;
-        $static = array();
-        $sql   = 'SELECT COUNT(*) AS c, depart FROM `luck_awards` GROUP BY depart';
-        $dlist = $depart->query($sql);
+        $dlist = $this->field('COUNT(*) AS c,depart')->group('depart')->select();
         foreach ($dlist as $item) {
             $people = ceil( $item['c'] * $ratio );
             $arr = [
@@ -87,5 +102,24 @@ class BingoModel extends Model {
             ];
             $depart->add($arr);
         }
+    }
+
+    /**
+     * 获取中奖列表
+     * ---------------------------------------------
+     * @return [type] [description]
+     * ---------------------------------------------
+     * @since  2015-01-04
+     * @author yuzhihao
+     */
+    public function showWinner(){
+        $res  = $this->where(['flag'=>['gt',0],'type'=>['gt',0]])->select();
+        $type = [];
+        if( !empty($res) ){
+            foreach ($res as $value) {
+                $type[$value['type']][] = $value;
+            }
+        }
+        return $type;
     }
 }

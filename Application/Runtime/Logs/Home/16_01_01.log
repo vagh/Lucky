@@ -11264,3 +11264,81 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000845s ]
 INFO: [ app_end ] --END-- [ RunTime:0.001098s ]
 
+[ 2016-01-01T19:52:49+08:00 ] 127.0.0.1 /index.php/Home/Index/getList.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000052s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001070s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001613s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001932s ]
+SQL: SHOW COLUMNS FROM `luck_awards` [ RunTime:0.0182s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `luck_awards` WHERE `type` = 2 LIMIT 1   [ RunTime:0.0167s ]
+SQL: SELECT * FROM `luck_awards` WHERE `flag` = 0 AND `type` = 0  [ RunTime:0.0209s ]
+
+[ 2016-01-01T19:52:53+08:00 ] 127.0.0.1 /index.php/Home/Index/getOne.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000663s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000540s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000670s ]
+SQL: SHOW COLUMNS FROM `luck_awards` [ RunTime:0.0168s ]
+SQL: SELECT `name`, `year`, `depart` FROM `luck_awards`
+        WHERE depart IN (SELECT `dname` FROM `luck_depart` WHERE num != prize)
+        AND flag = '0' [ RunTime:0.0231s ]
+SQL: UPDATE `luck_awards` SET `flag`='1',`type`='2' WHERE `name` = '李祯才' [ RunTime:0.0235s ]
+SQL: SHOW COLUMNS FROM `luck_depart` [ RunTime:0.0151s ]
+SQL: UPDATE `luck_depart` SET `prize`=prize+1 WHERE `dname` = '生产中心' [ RunTime:0.0284s ]
+
+[ 2016-01-01T19:52:54+08:00 ] 127.0.0.1 /index.php/Home/Index/getList.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000064s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000908s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000892s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001288s ]
+SQL: SHOW COLUMNS FROM `luck_awards` [ RunTime:0.0188s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `luck_awards` WHERE `type` = 2 LIMIT 1   [ RunTime:0.0143s ]
+SQL: SELECT * FROM `luck_awards` WHERE `flag` = 0 AND `type` = 0  [ RunTime:0.0200s ]
+
+[ 2016-01-01T19:52:56+08:00 ] 127.0.0.1 /index.php/Home/Index/getOne.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000086s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001422s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000863s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001100s ]
+SQL: SHOW COLUMNS FROM `luck_awards` [ RunTime:0.0163s ]
+SQL: SELECT `name`, `year`, `depart` FROM `luck_awards`
+        WHERE depart IN (SELECT `dname` FROM `luck_depart` WHERE num != prize)
+        AND flag = '0' [ RunTime:0.0235s ]
+SQL: UPDATE `luck_awards` SET `flag`='1',`type`='2' WHERE `name` = '王晶晶' [ RunTime:0.0195s ]
+SQL: SHOW COLUMNS FROM `luck_depart` [ RunTime:0.0149s ]
+SQL: UPDATE `luck_depart` SET `prize`=prize+1 WHERE `dname` = '运营中心' [ RunTime:0.0194s ]
+
+[ 2016-01-01T19:52:58+08:00 ] 127.0.0.1 /index.php/Home/Index/getList.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000083s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001285s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000907s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001138s ]
+SQL: SHOW COLUMNS FROM `luck_awards` [ RunTime:0.0162s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `luck_awards` WHERE `type` = 2 LIMIT 1   [ RunTime:0.0151s ]
+SQL: SELECT * FROM `luck_awards` WHERE `flag` = 0 AND `type` = 0  [ RunTime:0.0231s ]
+
+[ 2016-01-01T19:52:59+08:00 ] 127.0.0.1 /index.php/Home/Index/getOne.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001066s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000725s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000903s ]
+SQL: SHOW COLUMNS FROM `luck_awards` [ RunTime:0.0165s ]
+SQL: SELECT `name`, `year`, `depart` FROM `luck_awards`
+        WHERE depart IN (SELECT `dname` FROM `luck_depart` WHERE num != prize)
+        AND flag = '0' [ RunTime:0.0207s ]
+SQL: UPDATE `luck_awards` SET `flag`='1',`type`='2' WHERE `name` = '高国桓' [ RunTime:0.0217s ]
+SQL: SHOW COLUMNS FROM `luck_depart` [ RunTime:0.0166s ]
+SQL: UPDATE `luck_depart` SET `prize`=prize+1 WHERE `dname` = '企业产品事业部' [ RunTime:0.0198s ]
+

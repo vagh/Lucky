@@ -1,0 +1,1 @@
+a:4:{i:0;s:5:"dname";i:1;s:3:"num";i:2;s:5:"prize";s:5:"_type";a:3:{s:5:"dname";s:12:"varchar(100)";s:3:"num";s:20:"smallint(3) unsigned";s:5:"prize";s:11:"smallint(3)";}}

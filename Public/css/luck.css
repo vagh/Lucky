@@ -4,7 +4,7 @@ html {
 }
 #id1 {
 	font-size: 100px;
-	color: #e4e4e4;
+	color: #fff;
 }
 body {
 	background-repeat: no-repeat;
@@ -12,6 +12,7 @@ body {
 	background-color: #00BDDC;
 	background-image: url(../a.jpg);
 	background-size: 100% 100%;
+	overflow-x: hidden;
 }
 .snow-container {
 	position: fixed;

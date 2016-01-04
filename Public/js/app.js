@@ -3,9 +3,12 @@ $(function(){
     var start_btn = $("#start"); 
     var stop_btn  = $("#stop");
     var rool      = $("#roll");
+    var amClass   = 'wobble animated';
+
     start_btn.removeAttr('disabled');
 
     start_btn.on('click', function(){ 
+        rool.removeClass(amClass);
         start_btn.attr('disabled','disabled');
         var type = $('input[name="luckType"]:checked').val();
         $.post(resource,{type:type},function(json){ 
@@ -33,6 +36,7 @@ $(function(){
     
     stop_btn.on('click', function(){
         var type = $('input[name="luckType"]:checked').val();
+        rool.addClass(amClass);
         rool.html('读取中');
         clearInterval(_gogo);
         rool.html('读取中');
@@ -44,7 +48,7 @@ $(function(){
                     rool.html('都抽完啦');
                 }
                 var html = pushStatusList(data.type,data.name);
-                $("#result").append(html); 
+                $("#result").append(html);
             }
             start_btn.removeAttr('disabled');
             stop_btn.attr('disabled','disabled');
@@ -75,8 +79,8 @@ function pushStatusList(type,name){
 
     html += '<div class="pallete-item rubberBand animated">';
     html += '    <dl class="palette '+ color +'">';
-    html += '        <dt>' + typename + '</dt>';
-    html += '        <dd>' + name + '</dd>';
+    html += '        <dt>' + name + '</dt>';
+    html += '        <dd>' + typename + '</dd>';
     html += '    </dl>';
     html += '</div>';
     return html;

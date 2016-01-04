@@ -3,8 +3,17 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
 
+    //奖品名称对应关系
     private $luckList = [1=>'一等奖',2=>'二等奖',3=>'三等奖',4=>'四等奖'];
 
+    /**
+     *  首页展示(获取抽奖历史并排序)
+     *  ---------------------------------------------
+     *  @return Void
+     *  ---------------------------------------------
+     *  @author : yuzhihao
+     *  @since  : 2016-01-01
+     */
     public function index(){
     	$Bingo = D('Bingo');
         // 防止页面刷新清除中奖历史
@@ -20,13 +29,17 @@ class IndexController extends Controller {
     }
 
     /**
-     * 获取符合条件的人员列表 仅供前端展示
-     * @return [type] [description]
+     *  获取符合条件的人员列表 仅供前端展示
+     *  ---------------------------------------------
+     *  @return Void
+     *  ---------------------------------------------
+     *  @author : yuzhihao
+     *  @since  : 2016-01-01
      */
     public function getList(){
     	$type = I('type',1);
     	$Bingo = D('Bingo');
-    	$list = $Bingo->getList($type);
+    	$list = $Bingo->getList($type,'name,id');
     	if( $list ){
     		$this->ajaxReturn(['list'=>$list,'staus'=>1]);
     	}else{
@@ -34,20 +47,32 @@ class IndexController extends Controller {
     	}
     }
 
+    /**
+     *  获取奖品对应块颜色
+     *  ---------------------------------------------
+     *  @return Void
+     *  ---------------------------------------------
+     *  @author : yuzhihao
+     *  @since  : 2016-01-01
+     */
     private function _getBlockColor($type = 1){
         $colorList = [1=>'palette-pomegranate',2=>'palette-wisteria',3=>'palette-peter-river',4=>'palette-emerald'];
         return $colorList[$type];
     }
 
     /**
-     * 抽取一个
-     * @return [type] [description]
+     *  抽取一个获奖人员
+     *  ---------------------------------------------
+     *  @return Void
+     *  ---------------------------------------------
+     *  @author : yuzhihao
+     *  @since  : 2016-01-01
      */
     public function getOne(){
     	$Bingo = D('Bingo');
         $type  = I('type');
     	$res = $Bingo->draw($type);
-    	$this->ajaxReturn(['name'=>$res,'typename'=>$this->luckList[$type],'type'=>$type]);
+    	$this->ajaxReturn(['name'=>$res,'type'=>$type]);
     }
 
     /**
@@ -55,12 +80,21 @@ class IndexController extends Controller {
      *  ---------------------------------------------
      *  @return Void
      *  ---------------------------------------------
-     *  @author : lvpenglong
-     *  @since  : 2015-12-16
+     *  @author : yuzhihao 
+     *  @since  : 2016-01-01
      */
     public function depart(){
     	$num = 30;
         $result = D('Bingo')->depart($num);
-        var_dump($result);
+        echo "生成成功！";
+    }
+
+    /**
+     * 中奖名单展示或导出
+     */
+    public function showWinner(){
+        $res = D('Bingo')->showWinner();
+        $this->assign('data',$res);
+        $this->display();
     }
 }

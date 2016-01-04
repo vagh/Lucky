@@ -5728,9 +5728,9 @@ fieldset[disabled] .navbar-inverse .navbar-btn.active {
   margin: 1px 0 3px;
 }
 .pallete-item {
-  width: 140px;
   float: left;
-  margin: 20px 40px;
+  margin: 20px 33px;
+  width: 9%;
 }
 .palette {
   font-size: 14px;
@@ -5747,6 +5747,8 @@ fieldset[disabled] .navbar-inverse .navbar-btn.active {
 .palette dt {
   display: block;
   font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 20px;
   opacity: .8;
 }
 .palette dd {
